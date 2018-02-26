@@ -4,29 +4,34 @@
 
 $("#submitBtn").on("click", function(event){
     event.preventDefault();
-    $("#articleBox").empty();
+    $(".col-md-8").empty();
 // come back to articleBox //
 // will the accents below work with utf-8? //
 var topics = ["Chilean hot dogs", "Sonoran hot dogs", "Chicago hot dogs", "mu‘assel", "Monster energy drink", "pā"]
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifs + "&limit=20&api_key=mEX6cQnABCZbJIvXRQnTWqKdCkPJcj0h";
+var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&limit=20&api_key=mEX6cQnABCZbJIvXRQnTWqKdCkPJcj0h";
 // took a second to figure out how to set the printed results to 20 //
 var searchTerm = $("#searchTerm").val();
 
-
+// this may really be two separate functions; unsure if that's poor practice though //
 $.ajax({
     url: queryURL,
     method: 'GET',
 }).then(function(response) {
+    for (var i=0;i<topics.length;i++){
 
-    for (var i=0;i<limit;i++){
-      var gifs = $
-      $("<div class =".html();
-    }
+      var gifCol = $(".col-md-8");
+      var gif = $("<button>").text(response[i]);
+
+      gifCol.append(gif);
+
 });
 });
 
-
-
+// so: first, push user inputs into the topics array
+// then: run that array and create buttons for each one
+// so, each btn will need to have .attr to make it function?
+// then, print 20 gifs when a button is clicked
+// display below each gif its rating 
 
 
 
@@ -41,58 +46,3 @@ $.ajax({
 // This data is provided by the GIPHY API. Only once you get images displaying with button presses should you move on to the next step. Add a form to your page takes the value from a user input box and adds it into your topics array. Then make a function call that takes each topic in the array remakes the buttons on the page. //
 
 // end instructions //
-
-// code from earlier project NYT-scraper below; will be used as a reference as this is built out //
-
-$("#submitBtn").on("click", function(event){
-    event.preventDefault();
-    $("#articleBox").empty();
-
-    // take input from forms
-    var searchTerm = $("#searchTerm").val();
-    var limit = $("#resultLength").val();
-    var start = $("#startYear").val();
-    var end = $("#endYear").val();
-
-    // for edge case with no input in resultLength
-    if(!limit){
-        limit=10;
-    }
-
-    // Urls for different situations of date boundary input
-    var url = "";
-    var urlBoth = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq="
-    +searchTerm+"&begin_date="+start+"0101&end_date="+end+"0101&api-key=4f3b87ebf5b24f85ab9eba9ab5f59cc1";
-    var urlStart= "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq="
-    +searchTerm+"&begin_date="+start+"0101&api-key=4f3b87ebf5b24f85ab9eba9ab5f59cc1";
-    var urlEnd= "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq="
-    +searchTerm+"&end_date="+end+"0101&api-key=4f3b87ebf5b24f85ab9eba9ab5f59cc1";
-    var urlNeither= "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq="
-    +searchTerm+"&api-key=4f3b87ebf5b24f85ab9eba9ab5f59cc1";
-
-    // conditional to prevent error if one or both years aren't input
-    if (start===""&&end===""){
-        url = urlNeither;
-    } else if (start===""){
-        url = urlEnd;
-    } else if (end===""){
-        url = urlStart;
-    } else {
-        url = urlBoth;
-    }
-    $.ajax({
-        url: url,
-        method: 'GET',
-    }).then(function(response) {
-        // after promise, retreive information and append it to the article box div
-
-        for (var i=0;i<limit;i++){
-        var title = $("<h3>").text(response.response.docs[i].headline.main);
-        var articleURL = $("<a>").attr("href", response.response.docs[i].web_url).append(title);
-        var snippet = $("<p>").text(response.response.docs[i].snippet);
-        var pubDate = $("<p>").html("<b>Published in "+response.response.docs[i].pub_date.slice(0,4)+"</b>");
-        var lineBreak = $("<div>").addClass("lineBreak");
-        $("#articleBox").append(articleURL,snippet,pubDate,lineBreak);
-        }
-    });
-});
