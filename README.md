@@ -1,10 +1,12 @@
-# GIPHY API Assignment
+# giphy-api
 
-# Notes
-2/25/2018:<br></br>
-This is a class assingment for coding bootcamp. The original instructions are listed below.<br></br>
+# Project Description
+This is a class assingment for coding bootcamp. The original instructions are listed below the second gipy-api heading.<br></br>
 
 The completed assignment is hosted at: https://daniibooii.github.io/giphy-api/
+
+# Notes
+<br>
 
 # Remaining Work
 CSS still blank; a bit of extra code needs to be plugged in [see notes].<br>
