@@ -2,36 +2,76 @@
 // research conducted on: https://github.com/Giphy //
 
 
-$("#submitBtn").on("click", function(event){
-    event.preventDefault();
-    $(".col-md-8").empty();
+
 // come back to articleBox //
 // will the accents below work with utf-8? //
-var topics = ["Chilean hot dogs", "Sonoran hot dogs", "Chicago hot dogs", "mu‘assel", "Monster energy drink", "pā"]
-var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&limit=20&api_key=mEX6cQnABCZbJIvXRQnTWqKdCkPJcj0h";
-// took a second to figure out how to set the printed results to 20 //
-var searchTerm = $("#searchTerm").val();
+var topics = ["Chilean hot dogs", "Sonoran hot dogs", "Chicago hot dogs", "mu‘assel", "Monster energy drink", "Maori fort"]
 
-// this may really be two separate functions; unsure if that's poor practice though //
+// code below from in-class assignment //
+
+document.ready function (){
+$("#btnViewer").empty();
+  // Looping through the array of topics
+  for (var i = 0; i < topics.length; i++) {
+
+    var a = $("<button>");
+    // Adding a class
+    a.addClass("gif");
+    // Adding a data-attribute with a value of the movie at index i
+    a.attr("data-name", topics[i]);
+    // Providing the button's text with a value of the movie at index i
+    a.text(topics[i]);
+    // Adding the button to the HTML
+    $("#btnViewer").append(a);
+
+
+
+
+$("#submitBtn").on("click", function(event){
+    event.preventDefault();
+    var topic = $("#searchTerm").val().trim();
+            // The movie from the textbox is then added to our array
+    topics.push(topics);
+
+    // run render buttons
+
+      }
+    });
+    // review the order conventions later
+
+$("button").on("click", function() {
+          // In this case, the "this" keyword refers to the button that was clicked
+          var searchTerm = $(this).attr("data-name");
+          var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchTerm + "&limit=20&api_key=mEX6cQnABCZbJIvXRQnTWqKdCkPJcj0h";
+          // took a second to figure out how to set the printed results to 20 //
+
 $.ajax({
     url: queryURL,
     method: 'GET',
 }).then(function(response) {
+  console.log(queryURL);
     for (var i=0;i<topics.length;i++){
 
-      var gifCol = $(".col-md-8");
-      var gif = $("<button>").text(response[i]);
 
-      gifCol.append(gif);
 
-});
-});
+
+
+})
+}
+//)};
+
+
+// run renderBtns function
+
+
 
 // so: first, push user inputs into the topics array
+
+
 // then: run that array and create buttons for each one
 // so, each btn will need to have .attr to make it function?
 // then, print 20 gifs when a button is clicked
-// display below each gif its rating 
+// display below each gif its rating
 
 
 
