@@ -7,7 +7,8 @@ This is a class assingment for coding bootcamp. The original instructions are li
 The completed assignment is hosted at: https://daniibooii.github.io/giphy-api/
 
 # Remaining Work
-
+CSS still blank; a bit of extra code needs to be plugged in [see notes].<br>
+Assignment is 75-80% complete; I hope to finish it soon, or return to it later.<br>
 
 # giphy-api
 
