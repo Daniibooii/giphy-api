@@ -13,5 +13,5 @@ The completed assignment is hosted at: https://daniibooii.github.io/giphy-api/<b
 <br>
 
 # Remaining Work
-My CSS file still blank; a bit of extra code needs to be plugged in [see notes].<br>
+My CSS file still blank; a bit of extra code needs to be plugged in [see notes within project files].<br>
 Work is 75-80% complete; I hope to finish it soon, or return to it later.<br>
